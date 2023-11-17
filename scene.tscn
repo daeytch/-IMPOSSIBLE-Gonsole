@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1h3uacogjvc8"]
+
+[ext_resource type="Script" path="res://gonsole_script.gd" id="1_kdk5t"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kdk5t")
