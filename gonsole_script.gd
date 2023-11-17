@@ -2,10 +2,11 @@ extends Node2D
 
 var input = TextEdit.new()
 var output = RichTextLabel.new()
+var optxt = ""
 @export var open = KEY_BRACKETLEFT # use any key you want to open gonsole
 @export var close = KEY_BRACKETRIGHT # use any key you want to close gonsole
 @export var corner = "right" # what corner do u want it, left or right
-@export var enter = "'" # what button to execute script
+@export var enter = "\n" # what key to execute script
 
 # executed at beginning
 func _ready():
@@ -44,17 +45,10 @@ func makeOutput():
 		"left":
 			output.position = Vector2.ZERO
 func getOutput(cmd):
-	var optxt = ""
-	var cmdlist = ["w","q"]
-	# giant if/else statement because match doesn't work with list values
-	if cmd == getCMD(cmdlist[0]):
-		optxt += "w working"
-		clear(input)
-	elif cmd == getCMD(cmdlist[1]):
-		optxt += "q working"
-		clear(input)
-	else:
-		clear(input)
+	optxt = ""
+	var cmdlist = ["wx","q"]
+	# giant if statement because match doesn't work with list values, attached to function
+	returnOutput(cmd,cmdlist,"w working",0)
 	# if/else statement to check whether it's the first line or another line for newline
 	if output.text == "":
 		output.text = optxt
@@ -64,6 +58,15 @@ func getOutput(cmd):
 func getCMD(letter):
 	return letter + enter
 
+
+func returnOutput(cmd:String,cmdlist:Array,msg:String,num:int):
+	# func to make code easier to read
+	if cmd == getCMD(cmdlist[num]):
+		clear(input)
+		optxt += msg
+	else:
+		clear(input)
+		
 
 func clear(textname):
 	# called to clear textEdit after every command

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwl328gi1fuy3"]
+
+[ext_resource type="Script" path="res://gonsole_script.gd" id="1_42e8l"]
+
+[node name="Johnny\'s game" type="Node2D"]
+
+[node name="gonsole" type="Node2D" parent="."]
+script = ExtResource("1_42e8l")
+
+[node name="Node2D2" type="Node2D" parent="."]
