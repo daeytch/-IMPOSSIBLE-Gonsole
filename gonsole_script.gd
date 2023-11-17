@@ -1,13 +1,17 @@
 extends Node2D
 
 var input = TextEdit.new()
-var open = KEY_BRACKETLEFT # use any key you want to open menu
-var close = KEY_BRACKETRIGHT # use any key you want to close menu
+var output = RichTextLabel.new()
+@export var open = KEY_BRACKETLEFT # use any key you want to open menu
+@export var close = KEY_BRACKETRIGHT # use any key you want to close menu
+@export var corner = "right"
 
 # executed at beginning
 func _ready():
 	add_child(input)
 	makeInput()
+	add_child(output)
+	makeOutput()
 	set_visible(false)
 
 # executed every frame
@@ -37,6 +41,9 @@ func getInput():
 		"w`":
 			print("working2")
 			clear()
+
+func makeOutput():
+	pass
 
 func clear():
 	# called to clear textEdit after every command
